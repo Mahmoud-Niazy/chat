@@ -8,8 +8,8 @@ abstract class AppDimensions {
     _context = context;
   }
 
-  static get screenHeight => MediaQuery.of(_context).size.height;
+  static get height => MediaQuery.of(_context).size.height;
 
-  static get screenWidth => MediaQuery.of(_context).size.width;
+  static get width => MediaQuery.of(_context).size.width;
 
 }
