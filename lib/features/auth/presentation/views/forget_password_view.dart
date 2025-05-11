@@ -7,6 +7,7 @@ import '../../../../core/cache_helper/cache_helper.dart';
 import '../../../../core/methods/navigation.dart';
 import '../../../../core/methods/show_snack_bar.dart';
 import '../../../../core/methods/translate.dart';
+import '../../../../core/service_locator/service_locator.dart';
 import '../../../../core/utils/app_constance.dart';
 import '../../../../core/utils/app_dimensions.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -83,7 +84,12 @@ class ForgetPasswordView extends StatelessWidget {
                       label: 'check_your_email'.tr,
                       color: AppConstance.primaryColor,
                     );
-                    navigateAndRemoveUntil(context: context, screen: ResetPasswordView(email: state.email,));
+                    navigateAndRemoveUntil(context: context, screen:
+                    BlocProvider.value(
+                        value: serviceLocator<AuthCubit>(),
+                        child: ResetPasswordView(email: state.email,)
+                    )
+                    );
                   }
                   if(state is SendPasswordResetCodeErrorState){
                     showSnackBar(

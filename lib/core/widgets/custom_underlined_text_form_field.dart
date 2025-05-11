@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../utils/app_constance.dart';
 import '../utils/app_styles.dart';
@@ -30,7 +29,7 @@ class _CustomUnderLineTextFieldWithState extends State<CustomUnderLineTextFieldW
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
-      style: TextStyle(fontSize: 13.sp),
+      style: TextStyle(fontSize: 13),
       keyboardType: widget.type,
       validator: (String? value){
       if (value!.isEmpty) {

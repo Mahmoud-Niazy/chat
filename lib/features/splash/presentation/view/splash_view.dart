@@ -1,5 +1,7 @@
 import 'package:chat/core/utils/app_dimensions.dart';
+import 'package:chat/features/auth/presentation/views/login_view.dart';
 import 'package:flutter/material.dart';
+import '../../../../core/methods/navigation.dart';
 import '../../../../core/utils/app_assets.dart';
 
 class SplashView extends StatefulWidget {
@@ -18,12 +20,13 @@ class _SplashViewState extends State<SplashView> {
         seconds: 3,
       ),
       () {
-        // navigateAndRemoveUntil(
-        //   context: context,
-        //   // screen: OnBoardingView(),
-        //   screen: CacheHelper.token != null ? const LayoutView() : const OnBoardingView(),
-        //
-        // );
+        navigateAndRemoveUntil(
+          context: context,
+          // screen: OnBoardingView(),
+          screen: LoginView(),
+          // CacheHelper.token != null ? const LayoutView() : const OnBoardingView(),
+
+        );
       },
     );
   }
