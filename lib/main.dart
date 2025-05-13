@@ -1,16 +1,21 @@
+import 'package:chat/core/api/api_services.dart';
 import 'package:chat/core/cache_helper/cache_helper.dart';
 import 'package:chat/core/service_locator/service_locator.dart';
 import 'package:chat/core/utils/app_dimensions.dart';
 import 'package:chat/features/splash/presentation/view/splash_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 
 import 'core/localization/languages/localization.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   ServiceLocator.init();
+  ApiServices.init();
   await CacheHelper.init();
+  print(CacheHelper.token);
   runApp(const MyApp());
 }
 

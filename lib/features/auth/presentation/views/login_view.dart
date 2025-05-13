@@ -3,6 +3,7 @@ import 'package:chat/core/service_locator/service_locator.dart';
 import '../../../../core/cache_helper/cache_helper.dart';
 import '../../../../core/methods/navigation.dart';
 import '../../../../core/methods/translate.dart';
+import '../../../../core/scocket_io_services/socket_services.dart';
 import '../../../../core/utils/app_constance.dart';
 import '../../../../core/utils/app_dimensions.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -23,6 +24,7 @@ import '../../../../core/methods/show_snack_bar.dart';
 // import '../../../../core/scocket_io_services/socket_services.dart';
 import '../../../../core/widgets/custom_circular_progress_indicator.dart';
 import '../../../../core/widgets/custom_text_button.dart';
+import '../../../layout/presentation/view/layout_view.dart';
 import '../manager/auth_cubit/auth_states.dart';
 
 class LoginView extends StatelessWidget {
@@ -109,14 +111,12 @@ class LoginView extends StatelessWidget {
                               label: 'success'.tr,
                               color: AppConstance.primaryColor,
                             );
-
-                            /// TODO Navigation after authentication & init socket
-                            // navigateAndRemoveUntil(
-                            //   context: context,
-                            //   screen: LayoutView(),
-                            // );
+                            navigateAndRemoveUntil(
+                              context: context,
+                              screen: LayoutView(),
+                            );
                             clearControllers();
-                            // SocketService().init();
+                            SocketService().init();
                           }
                           if (state is SignInErrorState) {
                             showSnackBar(

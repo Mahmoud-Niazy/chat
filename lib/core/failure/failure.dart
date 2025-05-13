@@ -35,16 +35,18 @@ class ServerFailure extends Failure {
   }
 
   factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 422) {
+    if (statusCode == 400 || statusCode == 401 || statusCode == 403 || statusCode == 422 || statusCode ==  500) {
       if(response['msg'] is List){
         return ServerFailure(response['msg']);
       }
       return ServerFailure(response['msg']);
     } else if (statusCode == 404) {
       return ServerFailure(response['msg']);
-    } else if (statusCode == 500) {
-      return ServerFailure('Internal Server error, Please try later');
-    } else {
+    }
+    // else if (statusCode == 500) {
+    //   return ServerFailure('Internal Server error, Please try later');
+    // }
+    else {
       return ServerFailure('Opps There was an Error, Please try again');
     }
   }

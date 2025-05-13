@@ -1,4 +1,6 @@
+import '../../../../core/methods/navigation.dart';
 import '../../../../core/methods/show_snack_bar.dart';
+import '../../../../core/scocket_io_services/socket_services.dart';
 import '../../../../core/utils/app_constance.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/custom_button.dart';
@@ -10,12 +12,8 @@ import 'package:chat/features/auth/presentation/views/widgets/app_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import '../../../../core/cache_helper/cache_helper.dart';
-// import '../../../../core/methods/navigation.dart';
-import '../../../../core/methods/translate.dart';
-// import '../../../../core/scocket_io_services/socket_services.dart';
 import '../../../../core/utils/app_dimensions.dart';
-// import '../../../layout/presentation/view/layout_view.dart';
+import '../../../layout/presentation/view/layout_view.dart';
 
 class RegisterView extends StatelessWidget {
   static var emailController = TextEditingController();
@@ -105,23 +103,21 @@ class RegisterView extends StatelessWidget {
                               label: 'success'.tr,
                               color: AppConstance.primaryColor,
                             );
-                            /// TODO Navigation after authentication & init socket
-                            // navigateAndRemoveUntil(
-                            //   context: context,
-                            //   screen: const LayoutView(),
-                            // );
-                            // SocketService().init();
+                            navigateAndRemoveUntil(
+                              context: context,
+                              screen: const LayoutView(),
+                            );
+                            SocketService().init();
                           }
                           if (state is SignUpErrorState) {
-                            showSnackBar(
-                              context: context,
-                              label: CacheHelper.isAr != false ? await translateEnglishToArabic(state.error) : state.error,
-                              color: Colors.red,
+                            showErrorSnackBar(
+                              context,
+                              state.error
                             );
                           }
                         },
                         builder: (context, state) {
-                          var cubit = AuthCubit.get(context);
+                          var cubit = context.read<AuthCubit>();
                           if (state is SignUpLoadingState) {
                             return const CustomCircularProgressIndicator();
                           }

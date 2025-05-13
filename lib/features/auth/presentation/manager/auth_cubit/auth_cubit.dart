@@ -77,9 +77,9 @@ class AuthCubit extends Cubit<AuthStates> {
     }
     catch(error){
       if (error is DioException) {
-        emit(SignInErrorState(ServerFailure.fromDioException(error).error));
+        emit(SignUpErrorState(ServerFailure.fromDioException(error).error));
       } else {
-        emit(SignInErrorState(error.toString()));
+        emit(SignUpErrorState(error.toString()));
       }
     }
   }
