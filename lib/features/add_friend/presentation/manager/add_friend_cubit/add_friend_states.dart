@@ -8,3 +8,10 @@ class SendFriendRequestErrorState extends AddFriendStates{
   final String error;
   SendFriendRequestErrorState(this.error);
 }
+
+class FindUserLoadingState extends AddFriendStates{}
+class FindUserSuccessfullyState extends AddFriendStates{}
+class FindUserErrorState extends AddFriendStates{
+  final String error;
+  FindUserErrorState(this.error);
+}

@@ -1,8 +1,10 @@
+import 'package:chat/core/methods/navigation.dart';
 import 'package:chat/core/service_locator/service_locator.dart';
 import 'package:chat/core/utils/app_constance.dart';
 import 'package:chat/core/utils/app_styles.dart';
 import 'package:chat/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:chat/core/widgets/custom_error_widget.dart';
+import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_states.dart';
 import 'package:chat/features/profile/presentation/views/widgets/info_item.dart';
@@ -12,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_assets.dart';
+import '../../../add_friend/presentation/views/add_friend_view.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -24,10 +27,10 @@ class ProfileScreen extends StatelessWidget {
         child: BlocBuilder<ProfileCubit, ProfileStates>(
           builder: (context, state) {
             var cubit = context.read<ProfileCubit>();
-            if(state is GetUserDataLoadingState){
+            if (state is GetUserDataLoadingState) {
               return CustomCircularProgressIndicator();
             }
-            if(state is GetUserDataErrorState){
+            if (state is GetUserDataErrorState) {
               return CustomErrorWidget();
             }
             return CustomScrollView(
@@ -69,7 +72,8 @@ class ProfileScreen extends StatelessWidget {
                           Text(
                             cubit.userData.name ?? '',
                             style: AppStyles.style17.copyWith(
-                                color: Colors.white),
+                              color: Colors.white,
+                            ),
                           ),
                         ],
                       ),
@@ -99,22 +103,31 @@ class ProfileScreen extends StatelessWidget {
                           SettingItem(
                             Icons.person_add_outlined,
                             'add_friend'.tr,
-                                () {},
+                            () {
+                              navigate(
+                                context: context,
+                                screen: BlocProvider(
+                                  create:
+                                      (context) => serviceLocator<AddFriendCubit>(),
+                                  child: AddFriendView(),
+                                ),
+                              );
+                            },
                           ),
                           SettingItem(
                             Icons.contact_support_outlined,
                             'contact_us'.tr,
-                                () {},
+                            () {},
                           ),
                           SettingItem(
                             Icons.language_outlined,
                             'language'.tr,
-                                () {},
+                            () {},
                           ),
                           SettingItem(
                             Icons.dark_mode_outlined,
                             'mode'.tr,
-                                () {},
+                            () {},
                           ),
                         ]),
                       ],

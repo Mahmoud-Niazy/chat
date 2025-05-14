@@ -9,11 +9,20 @@ class AddFriendRepoImp extends AddFriendRepo {
   AddFriendRepoImp(this.apiServices);
 
   @override
-  Future<void> sendFriendRequest(String userId) async{
-     await apiServices.postData(
+  Future<void> sendFriendRequest(String userId) async {
+    await apiServices.postData(
       path: '/user/friend/$userId',
       data: {},
       token: CacheHelper.token,
     );
+  }
+
+  @override
+  Future<Map<String, dynamic>> findUser(String email) async {
+    var res = await apiServices.getData(
+      path: '/user/find/$email',
+      token: CacheHelper.token,
+    );
+    return res['user'];
   }
 }

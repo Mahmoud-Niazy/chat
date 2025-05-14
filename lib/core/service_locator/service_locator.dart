@@ -1,8 +1,13 @@
+import 'package:chat/features/add_friend/domain/repos/add_friend_repo.dart';
+import 'package:chat/features/add_friend/domain/usecases/find_user_use_case.dart';
+import 'package:chat/features/add_friend/domain/usecases/send_friend_request_use_case.dart';
+import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
 import 'package:chat/features/auth/domain/repos/auth_repo.dart';
 import 'package:chat/features/profile/domain/repos/profile_repo.dart';
 import 'package:chat/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:get_it/get_it.dart';
+import '../../features/add_friend/data/repos/add_friend_repo_imp.dart';
 import '../../features/auth/data/repos/user_repo_imp.dart';
 import '../../features/auth/domain/usecases/reset_password_use_case.dart';
 import '../../features/auth/domain/usecases/send_reset_password_code_use_case.dart';
@@ -37,6 +42,9 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<ProfileRepo>(
           () => ProfileRepoImp(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<AddFriendRepo>(
+          () => AddFriendRepoImp(serviceLocator()),
+    );
 
 
     /// USE CASES
@@ -55,6 +63,12 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<GetUserDataUseCase>(
           ()=> GetUserDataUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<SendFriendRequestUseCase>(
+          ()=> SendFriendRequestUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<FindUserUseCase>(
+          ()=> FindUserUseCase(serviceLocator()),
+    );
 
 
     /// CUBITS
@@ -66,6 +80,9 @@ class ServiceLocator {
     );
     serviceLocator.registerFactory<ProfileCubit>(
           ()=> ProfileCubit(serviceLocator()),
+    );
+    serviceLocator.registerFactory<AddFriendCubit>(
+          ()=> AddFriendCubit(serviceLocator(),serviceLocator()),
     );
   }
 }

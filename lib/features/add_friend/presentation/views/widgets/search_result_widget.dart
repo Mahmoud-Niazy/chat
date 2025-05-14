@@ -1,11 +1,16 @@
 import 'package:chat/core/utils/app_assets.dart';
 import 'package:chat/core/utils/app_dimensions.dart';
+import 'package:chat/core/utils/app_styles.dart';
+import 'package:chat/features/add_friend/data/models/search_result_model/search_result_model.dart';
 import 'package:chat/features/add_friend/presentation/views/widgets/action_button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../../../core/utils/app_constance.dart';
 
-class SearchResultWidget extends StatelessWidget{
-  const SearchResultWidget({super.key});
+class SearchResultWidget extends StatelessWidget {
+  final SearchResultModel user;
+
+  const SearchResultWidget({super.key, required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +21,7 @@ class SearchResultWidget extends StatelessWidget{
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withValues(
-              alpha: .6,
-            ),
+            color: Colors.grey.withValues(alpha: .6),
             spreadRadius: 1,
             blurRadius: 10,
             offset: const Offset(0, 2),
@@ -30,7 +33,7 @@ class SearchResultWidget extends StatelessWidget{
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: AppConstance.primaryColor.withOpacity(0.1),
+              color: AppConstance.primaryColor.withValues(alpha: 0.1),
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(16),
                 topRight: Radius.circular(16),
@@ -39,8 +42,8 @@ class SearchResultWidget extends StatelessWidget{
             child: Row(
               children: [
                 Container(
-                  width: AppDimensions.width*.25,
-                  height: AppDimensions.height *.15,
+                  width: AppDimensions.width * .2,
+                  height: AppDimensions.height * .1,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(
@@ -48,7 +51,10 @@ class SearchResultWidget extends StatelessWidget{
                       width: 2,
                     ),
                     image: DecorationImage(
-                      image: AssetImage(AppAssets.userImage),
+                      image: (user.userProfileImage != null && user.userProfileImage  != '')?
+                          NetworkImage(user.userProfileImage!)
+                      :
+                      AssetImage(AppAssets.userImage),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -58,18 +64,9 @@ class SearchResultWidget extends StatelessWidget{
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                       'Mahmoud Elsolia',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      Text(user.name ?? '', style: AppStyles.style13),
                       const SizedBox(height: 4),
-                      Text(
-                        "mahmoud@gmail.com",
-                        style: TextStyle(color: Colors.grey[600], fontSize: 14),
-                      ),
+                      Text(user.email ?? '', style: AppStyles.style11Grey),
                     ],
                   ),
                 ),
@@ -83,25 +80,17 @@ class SearchResultWidget extends StatelessWidget{
               children: [
                 ActionButtonWidget(
                   Icons.person_add_outlined,
-                  'Add Friend',
+                  'add_friend'.tr,
                   () {
                     // Handle add friend action
                   },
                 ),
-                ActionButtonWidget(
-                  Icons.message_outlined,
-                   'Message',
-                  () {
-                    // Handle message action
-                  },
-                ),
-                ActionButtonWidget(
-                Icons.more_horiz,
-                 'More',
-                  () {
-                    // Handle more options
-                  },
-                ),
+                ActionButtonWidget(Icons.message_outlined, 'message'.tr, () {
+                  // Handle message action
+                }),
+                ActionButtonWidget(Icons.more_horiz, 'more'.tr, () {
+                  // Handle more options
+                }),
               ],
             ),
           ),

@@ -108,5 +108,8 @@ Map<String,String> englishLanguage = {
   "groups" : "Groups",
   "contact_info" : "Contact Info",
   "add_friend" : "Add Friend",
-  "settings" : "Settings"
+  "settings" : "Settings",
+  "please_enter_user_email" : "Please Enter Full User Email",
+  "message" : "Message",
+  "more" : "More"
 };

@@ -108,5 +108,8 @@ Map<String, String> arabicLanguage = {
   "groups" : "المجموعات",
   "contact_info" : "معلومات الاتصال",
   "add_friend" : "اضافة صديق",
-  "settings" : "الاعدادات"
+  "settings" : "الاعدادات",
+  "please_enter_user_email" : "من فضلك ادخل البريد الخاص بالمسختدم كاملا",
+  "message" : "رسالة",
+  "more" : "المزيد"
 };
