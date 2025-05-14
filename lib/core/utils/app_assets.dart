@@ -20,11 +20,14 @@ abstract class AppAssets {
   static const String search = 'assets/images/search.png';
   static const String profile = 'assets/images/profile.png';
   static const String searchLottie = 'assets/images/searchLottie.json';
-  static const String emptyList = 'assets/images/emptyList.json';
+  static const String emptyList = 'assets/lotties/emptyList.json';
   static const String egyptFlag = 'assets/images/egyptFlag.png';
   static const String englandFlag = 'assets/images/englandFlag.png';
   static const String courseImageDefault = 'assets/images/course_image_default.jpg';
   static const String home2 = 'assets/images/home2.png';
   static const String google = 'assets/images/google.png';
   static const String chat = 'assets/images/chat.png';
+  static const String groups = 'assets/images/groups.png';
+  static const String error = 'assets/lotties/error.json';
+
 }

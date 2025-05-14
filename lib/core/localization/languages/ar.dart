@@ -104,5 +104,9 @@ Map<String, String> arabicLanguage = {
   "new_purchase" : "عملية شراء جديدة",
   "new_lecture" : "محاضرة جديدة",
   "notifications" : "الاشعارات",
-  "dark_mode" : "وضع الظلام"
+  "dark_mode" : "وضع الظلام",
+  "groups" : "المجموعات",
+  "contact_info" : "معلومات الاتصال",
+  "add_friend" : "اضافة صديق",
+  "settings" : "الاعدادات"
 };

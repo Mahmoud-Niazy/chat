@@ -1,3 +1,4 @@
+import 'package:chat/core/service_locator/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
@@ -11,82 +12,56 @@ class LayoutView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarStates>(
-      builder: (context, state) {
-        var cubit = BottomNavigationBarCubit.get(context);
-        return Scaffold(
-          body: cubit.screens[cubit.currentIndex],
-          bottomNavigationBar: BottomNavigationBar(
-            currentIndex: cubit.currentIndex,
+    return BlocProvider(
+      create: (context) => serviceLocator<BottomNavigationBarCubit>(),
+      child: BlocBuilder<BottomNavigationBarCubit, BottomNavigationBarStates>(
+        builder: (context, state) {
+          var cubit = BottomNavigationBarCubit.get(context);
+          return Scaffold(
+            body: cubit.screens[cubit.currentIndex],
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: cubit.currentIndex,
 
-            onTap: (index) {
-              cubit.toggle(index);
-            },
-            items:  [
-              BottomNavigationBarItem(
-                icon: Image(
-                  image: AssetImage(
-                    AppAssets.home2,
+              onTap: (index) {
+                cubit.toggle(index);
+              },
+              items: [
+
+                BottomNavigationBarItem(
+                  icon: Image(
+                    image: AssetImage(
+                      AppAssets.chat,
+                    ),
+                    height: 20,
+                    width: 20,
                   ),
-                  height: 20,
-                  width: 20,
+                  label: 'chats'.tr,
                 ),
-                label: 'home'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: Image(
-                  image: AssetImage(
-                    AppAssets.chat,
+                BottomNavigationBarItem(
+                  icon: Image(
+                    image: AssetImage(
+                      AppAssets.groups,
+                    ),
+                    height: 20,
+                    width: 20,
                   ),
-                  height: 20,
-                  width: 20,
+                  label: 'groups'.tr,
                 ),
-                label: 'chats'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: Image(
-                  image: AssetImage(
-                    AppAssets.video,
+                BottomNavigationBarItem(
+                  icon: Image(
+                    image: AssetImage(
+                      AppAssets.profile,
+                    ),
+                    height: 20,
+                    width: 20,
                   ),
-                  height: 20,
-                  width: 20,
+                  label: 'profile'.tr,
                 ),
-                label: 'courses'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: Image(
-                  image: AssetImage(
-                    AppAssets.fav,
-                  ),
-                  height: 20,
-                  width: 20,
-                ),
-                label: 'favourites'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon:Image(
-                  image: AssetImage(
-                    AppAssets.search,
-                  ),
-                  height: 20,
-                  width: 20,
-                ),
-                label: 'search'.tr,
-              ),
-              BottomNavigationBarItem(
-                icon: Image(
-                  image: AssetImage(
-                    AppAssets.profile,
-                  ),
-                  height: 20,
-                  width: 20,
-                ),
-                label: 'profile'.tr,
-              ),
-            ],
-          ),
-        );
-      },
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

@@ -104,5 +104,9 @@ Map<String,String> englishLanguage = {
   "new_purchase" : "New Purchase Process",
   "new_lecture" : "New Lecture",
   "notifications" : "Notifications",
-  "dark_mode" : "Dark mode"
+  "dark_mode" : "Dark mode",
+  "groups" : "Groups",
+  "contact_info" : "Contact Info",
+  "add_friend" : "Add Friend",
+  "settings" : "Settings"
 };

@@ -11,7 +11,6 @@ class AppStyles {
 
   static const style20 = TextStyle(
     fontSize: 20,
-
     fontFamily: AppConstance.appFontFamily ,
   );
 

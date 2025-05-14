@@ -9,7 +9,7 @@ class ApiServices {
       BaseOptions(
         baseUrl: dotenv.env['API_BASE_URL'] ?? '',
         contentType: 'application/json',
-        connectTimeout: const Duration(seconds: 15),
+        connectTimeout: const Duration(seconds: 8),
       ),
     );
   }
