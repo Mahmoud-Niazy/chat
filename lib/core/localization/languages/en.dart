@@ -111,5 +111,6 @@ Map<String,String> englishLanguage = {
   "settings" : "Settings",
   "please_enter_user_email" : "Please Enter Full User Email",
   "message" : "Message",
-  "more" : "More"
+  "more" : "More",
+  "friends" : "Friends"
 };

@@ -6,8 +6,9 @@ class ActionButtonWidget extends StatelessWidget{
   final IconData icon;
   final String label;
   final VoidCallback onTap;
+  final Color? color;
 
-  const ActionButtonWidget(this.icon,this.label,this.onTap,{super.key});
+  const ActionButtonWidget(this.icon,this.label,this.onTap,this.color,{super.key});
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -18,7 +19,7 @@ class ActionButtonWidget extends StatelessWidget{
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(icon, color: AppConstance.primaryColor, size: 24),
+            Icon(icon, color: color ?? AppConstance.primaryColor, size: 24),
             const SizedBox(height: 4),
             Text(
               label,

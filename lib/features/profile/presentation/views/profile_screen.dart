@@ -5,6 +5,7 @@ import 'package:chat/core/utils/app_styles.dart';
 import 'package:chat/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:chat/core/widgets/custom_error_widget.dart';
 import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
+import 'package:chat/features/friends_list/presentation/manager/friends_list_cubit/friends_list_cubit.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_states.dart';
 import 'package:chat/features/profile/presentation/views/widgets/info_item.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../add_friend/presentation/views/add_friend_view.dart';
+import '../../../friends_list/presentation/views/friends_list_view.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -100,6 +102,20 @@ class ProfileScreen extends StatelessWidget {
                         ]),
                         const SizedBox(height: 24),
                         SectionItem('settings'.tr, [
+                          SettingItem(
+                            Icons.person_add_outlined,
+                            'friends'.tr,
+                                () {
+                              navigate(
+                                context: context,
+                                screen: BlocProvider(
+                                  create:
+                                      (context) => serviceLocator<FriendsListCubit>(),
+                                  child: FriendsListView(),
+                                ),
+                              );
+                            },
+                          ),
                           SettingItem(
                             Icons.person_add_outlined,
                             'add_friend'.tr,

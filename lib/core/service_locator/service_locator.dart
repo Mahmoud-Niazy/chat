@@ -3,6 +3,11 @@ import 'package:chat/features/add_friend/domain/usecases/find_user_use_case.dart
 import 'package:chat/features/add_friend/domain/usecases/send_friend_request_use_case.dart';
 import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
 import 'package:chat/features/auth/domain/repos/auth_repo.dart';
+import 'package:chat/features/friends_list/domain/repos/friends_list_repo.dart';
+import 'package:chat/features/friends_list/domain/usecases/block_friend_use_case.dart';
+import 'package:chat/features/friends_list/domain/usecases/delete_friend_use_cas.dart';
+import 'package:chat/features/friends_list/domain/usecases/get_all_friends_use_case.dart';
+import 'package:chat/features/friends_list/presentation/manager/friends_list_cubit/friends_list_cubit.dart';
 import 'package:chat/features/profile/domain/repos/profile_repo.dart';
 import 'package:chat/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_cubit.dart';
@@ -14,6 +19,7 @@ import '../../features/auth/domain/usecases/send_reset_password_code_use_case.da
 import '../../features/auth/domain/usecases/sign_in_use_case.dart';
 import '../../features/auth/domain/usecases/sign_up_use_case.dart';
 import '../../features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import '../../features/friends_list/data/repos/friends_list_repo_imp.dart';
 import '../../features/layout/presentation/manager/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
 import '../../features/profile/data/repos/profile_repo_imp.dart';
 import '../api/api_services.dart';
@@ -45,6 +51,9 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<AddFriendRepo>(
           () => AddFriendRepoImp(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<FriendsListRepo>(
+          () => FriendsListRepoImp(serviceLocator()),
+    );
 
 
     /// USE CASES
@@ -69,6 +78,15 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<FindUserUseCase>(
           ()=> FindUserUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<BlockFriendUseCase>(
+          ()=> BlockFriendUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<DeleteFriendUseCase>(
+          ()=> DeleteFriendUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<GetAllFriendsUseCase>(
+          ()=> GetAllFriendsUseCase(serviceLocator()),
+    );
 
 
     /// CUBITS
@@ -83,6 +101,9 @@ class ServiceLocator {
     );
     serviceLocator.registerFactory<AddFriendCubit>(
           ()=> AddFriendCubit(serviceLocator(),serviceLocator()),
+    );
+    serviceLocator.registerFactory<FriendsListCubit>(
+          ()=> FriendsListCubit(serviceLocator(),serviceLocator(),serviceLocator()),
     );
   }
 }

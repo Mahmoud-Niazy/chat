@@ -111,5 +111,6 @@ Map<String, String> arabicLanguage = {
   "settings" : "الاعدادات",
   "please_enter_user_email" : "من فضلك ادخل البريد الخاص بالمسختدم كاملا",
   "message" : "رسالة",
-  "more" : "المزيد"
+  "more" : "المزيد",
+  "friends" : "الاصدقاء"
 };
