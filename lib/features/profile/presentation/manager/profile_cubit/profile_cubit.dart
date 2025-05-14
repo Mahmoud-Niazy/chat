@@ -1,5 +1,5 @@
 import 'package:chat/core/failure/failure.dart';
-import 'package:chat/features/profile/domain/use_cases/get_user_data_use_case.dart';
+import 'package:chat/features/profile/domain/usecases/get_user_data_use_case.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_states.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -4,10 +4,10 @@ import '../../../../../core/cache_helper/cache_helper.dart';
 import '../../../../../core/failure/failure.dart';
 import '../../../../../core/utils/app_keys.dart';
 import '../../../data/models/user_registration_response_model.dart';
-import '../../../domain/use_cases/reset_password_use_case.dart';
-import '../../../domain/use_cases/send_reset_password_code_use_case.dart';
-import '../../../domain/use_cases/sign_in_use_case.dart';
-import '../../../domain/use_cases/sign_up_use_case.dart';
+import '../../../domain/usecases/reset_password_use_case.dart';
+import '../../../domain/usecases/send_reset_password_code_use_case.dart';
+import '../../../domain/usecases/sign_in_use_case.dart';
+import '../../../domain/usecases/sign_up_use_case.dart';
 import 'auth_states.dart';
 
 class AuthCubit extends Cubit<AuthStates> {
