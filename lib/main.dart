@@ -17,6 +17,7 @@ void main() async{
   ApiServices.init();
   await CacheHelper.init();
   print(CacheHelper.token);
+  // print(CacheHelper.userId);
   runApp(const MyApp());
 }
 

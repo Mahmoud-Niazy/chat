@@ -44,6 +44,10 @@ class AppStyles {
     fontFamily: AppConstance.appFontFamily ,
     color: Colors.grey,
   );
+  static const style15 = TextStyle(
+    fontSize: 15,
+    fontFamily: AppConstance.appFontFamily ,
+  );
   static const style13Grey = TextStyle(
     fontSize: 13,
     fontFamily: AppConstance.appFontFamily ,

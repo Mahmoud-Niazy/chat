@@ -110,7 +110,7 @@ class ProfileScreen extends StatelessWidget {
                                 context: context,
                                 screen: BlocProvider(
                                   create:
-                                      (context) => serviceLocator<FriendsListCubit>(),
+                                      (context) => serviceLocator<FriendsListCubit>()..getAllFriends(),
                                   child: FriendsListView(),
                                 ),
                               );

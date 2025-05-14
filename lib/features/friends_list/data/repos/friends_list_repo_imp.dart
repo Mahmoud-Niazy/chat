@@ -14,7 +14,7 @@ class FriendsListRepoImp extends FriendsListRepo {
       path: '/user/friends',
       token: CacheHelper.token,
     );
-    return res['friends'];
+    return res['friends'].cast<Map<String,dynamic>>();
   }
 
   @override
