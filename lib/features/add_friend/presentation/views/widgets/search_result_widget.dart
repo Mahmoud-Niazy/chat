@@ -1,3 +1,4 @@
+import 'package:chat/core/cache_helper/cache_helper.dart';
 import 'package:chat/core/utils/app_assets.dart';
 import 'package:chat/core/utils/app_dimensions.dart';
 import 'package:chat/core/utils/app_styles.dart';
@@ -84,16 +85,25 @@ class SearchResultWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                if(user.userId != CacheHelper.userId)
                 BlocBuilder<AddFriendCubit, AddFriendStates>(
                   builder: (context, state) {
                     if(state is SendFriendRequestLoadingState){
                       return CustomCircularProgressIndicator();
                     }
+                    if(user.isSentRequest == true){
+                      return Text(
+                        'Request sent',
+                        style: AppStyles.style11.copyWith(
+                          color: AppConstance.primaryColor,
+                        ),
+                      );
+                    }
                     return ActionButtonWidget(
                      user.isFriend == true ? Icons.person_remove_alt_1_outlined: Icons.person_add_outlined,
                       'add_friend'.tr,
                           () async{
-                        await cubit.sendFriendRequest(user.userId ?? '');
+                        await cubit.sendFriendRequest(user.userId ?? '', user.email ?? '');
                           }, user.isFriend == true ? AppConstance.warningColor : null,
                     );
                   },

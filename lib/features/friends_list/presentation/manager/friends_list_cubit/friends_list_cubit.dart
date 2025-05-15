@@ -41,6 +41,7 @@ class FriendsListCubit extends Cubit<FriendsListStates> {
     emit(DeleteFriendLoadingState());
     try {
       await deleteFriendUseCase.execute(userId);
+      await getAllFriends();
       emit(DeleteFriendSuccessfullyState());
     } catch (error) {
       if (error is DioException) {
@@ -57,6 +58,7 @@ class FriendsListCubit extends Cubit<FriendsListStates> {
     emit(BlockFriendLoadingState());
     try {
       await blockFriendUseCase.execute(userId);
+      await getAllFriends();
       emit(BlockFriendSuccessfullyState());
     } catch (error) {
       if (error is DioException) {

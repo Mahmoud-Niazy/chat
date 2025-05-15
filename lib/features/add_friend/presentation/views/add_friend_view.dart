@@ -56,7 +56,7 @@ class AddFriendView extends StatelessWidget {
                       title: 'confirm'.tr,
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
-                          await cubit.findUser();
+                          await cubit.findUser(cubit.emailController.text);
                         }
                       },
                     );

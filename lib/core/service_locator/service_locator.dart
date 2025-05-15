@@ -3,6 +3,11 @@ import 'package:chat/features/add_friend/domain/usecases/find_user_use_case.dart
 import 'package:chat/features/add_friend/domain/usecases/send_friend_request_use_case.dart';
 import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
 import 'package:chat/features/auth/domain/repos/auth_repo.dart';
+import 'package:chat/features/edit_profile/domain/repos/edit_profile_repo.dart';
+import 'package:chat/features/edit_profile/domain/use_cases/get_user_data_use_case.dart';
+import 'package:chat/features/edit_profile/domain/use_cases/pick_image_use_case.dart';
+import 'package:chat/features/edit_profile/domain/use_cases/update_user_data_use_case.dart';
+import 'package:chat/features/edit_profile/presentation/managers/settings_cubit.dart';
 import 'package:chat/features/friends_list/domain/repos/friends_list_repo.dart';
 import 'package:chat/features/friends_list/domain/usecases/block_friend_use_case.dart';
 import 'package:chat/features/friends_list/domain/usecases/delete_friend_use_cas.dart';
@@ -19,6 +24,7 @@ import '../../features/auth/domain/usecases/send_reset_password_code_use_case.da
 import '../../features/auth/domain/usecases/sign_in_use_case.dart';
 import '../../features/auth/domain/usecases/sign_up_use_case.dart';
 import '../../features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import '../../features/edit_profile/data/repos/edit_profile_repo_imp.dart';
 import '../../features/friends_list/data/repos/friends_list_repo_imp.dart';
 import '../../features/layout/presentation/manager/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
 import '../../features/profile/data/repos/profile_repo_imp.dart';
@@ -54,6 +60,9 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<FriendsListRepo>(
           () => FriendsListRepoImp(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<EditProfileRepo>(
+          () => EditProfileRepoImp(serviceLocator()),
+    );
 
 
     /// USE CASES
@@ -87,6 +96,15 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<GetAllFriendsUseCase>(
           ()=> GetAllFriendsUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetUserDataForEditUseCase>(
+          ()=> GetUserDataForEditUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<PickImageForEditUseCase>(
+          ()=> PickImageForEditUseCase(),
+    );
+    serviceLocator.registerLazySingleton<UpdateUserDataUseCase>(
+          ()=> UpdateUserDataUseCase(serviceLocator()),
+    );
 
 
     /// CUBITS
@@ -104,6 +122,9 @@ class ServiceLocator {
     );
     serviceLocator.registerFactory<FriendsListCubit>(
           ()=> FriendsListCubit(serviceLocator(),serviceLocator(),serviceLocator()),
+    );
+    serviceLocator.registerFactory<EditProfileCubit>(
+          ()=> EditProfileCubit(serviceLocator(),serviceLocator(),serviceLocator()),
     );
   }
 }

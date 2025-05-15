@@ -1,5 +1,5 @@
 
-import 'package:chat/features/profile/presentation/views/profile_screen.dart';
+import 'package:chat/features/profile/presentation/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +16,7 @@ class BottomNavigationBarCubit extends Cubit<BottomNavigationBarStates> {
   List<Widget> screens = [
     Scaffold(),
     Scaffold(),
-    ProfileScreen(),
+    ProfileView(),
   ];
   int currentIndex = 0;
 

@@ -5,6 +5,8 @@ import 'package:chat/core/utils/app_styles.dart';
 import 'package:chat/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:chat/core/widgets/custom_error_widget.dart';
 import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
+import 'package:chat/features/edit_profile/presentation/managers/settings_cubit.dart';
+import 'package:chat/features/edit_profile/presentation/views/edit_user_data_view.dart';
 import 'package:chat/features/friends_list/presentation/manager/friends_list_cubit/friends_list_cubit.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_cubit.dart';
 import 'package:chat/features/profile/presentation/manager/profile_cubit/profile_states.dart';
@@ -18,14 +20,16 @@ import '../../../../core/utils/app_assets.dart';
 import '../../../add_friend/presentation/views/add_friend_view.dart';
 import '../../../friends_list/presentation/views/friends_list_view.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => serviceLocator<ProfileCubit>()..getUserData(),
+        create: (context) =>
+        serviceLocator<ProfileCubit>()
+          ..getUserData(),
         child: BlocBuilder<ProfileCubit, ProfileStates>(
           builder: (context, state) {
             var cubit = context.read<ProfileCubit>();
@@ -110,7 +114,9 @@ class ProfileScreen extends StatelessWidget {
                                 context: context,
                                 screen: BlocProvider(
                                   create:
-                                      (context) => serviceLocator<FriendsListCubit>()..getAllFriends(),
+                                      (context) =>
+                                  serviceLocator<FriendsListCubit>()
+                                    ..getAllFriends(),
                                   child: FriendsListView(),
                                 ),
                               );
@@ -119,13 +125,27 @@ class ProfileScreen extends StatelessWidget {
                           SettingItem(
                             Icons.person_add_outlined,
                             'add_friend'.tr,
-                            () {
+                                () {
                               navigate(
                                 context: context,
                                 screen: BlocProvider(
                                   create:
-                                      (context) => serviceLocator<AddFriendCubit>(),
+                                      (context) =>
+                                      serviceLocator<AddFriendCubit>(),
                                   child: AddFriendView(),
+                                ),
+                              );
+                            },
+                          ),
+                          SettingItem(
+                            Icons.edit,
+                            'edit_your_profile'.tr,
+                                () {
+                              navigate(
+                                context: context,
+                                screen: BlocProvider(
+                                  create: (context) => serviceLocator<EditProfileCubit>(),
+                                  child: EditProfileView(),
                                 ),
                               );
                             },
@@ -133,17 +153,17 @@ class ProfileScreen extends StatelessWidget {
                           SettingItem(
                             Icons.contact_support_outlined,
                             'contact_us'.tr,
-                            () {},
+                                () {},
                           ),
                           SettingItem(
                             Icons.language_outlined,
                             'language'.tr,
-                            () {},
+                                () {},
                           ),
                           SettingItem(
                             Icons.dark_mode_outlined,
                             'mode'.tr,
-                            () {},
+                                () {},
                           ),
                         ]),
                       ],

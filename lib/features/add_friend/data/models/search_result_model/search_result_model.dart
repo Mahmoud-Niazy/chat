@@ -4,6 +4,7 @@ class SearchResultModel {
   final String? name;
   final String? userProfileImage;
   final bool? isFriend;
+  final bool? isSentRequest;
 
   SearchResultModel({
     required this.userId,
@@ -11,6 +12,7 @@ class SearchResultModel {
     required this.name,
     required this.userProfileImage,
     required this.isFriend,
+    required this.isSentRequest,
   });
 
   factory SearchResultModel.fromJson(Map<String, dynamic> json) {
@@ -20,6 +22,7 @@ class SearchResultModel {
       name: json['name'],
       userProfileImage: json['userProfileImage'],
       isFriend: json['isFriend'],
+      isSentRequest: json['isSentRequest'],
     );
   }
 
@@ -30,6 +33,7 @@ class SearchResultModel {
       'name': name,
       'userProfileImage': userProfileImage,
       'isFriend': isFriend,
+      'isSentRequest': isSentRequest,
     };
   }
 }

@@ -19,10 +19,11 @@ class AddFriendCubit extends Cubit<AddFriendStates> {
     emailController.text = '';
   }
 
-  Future<void> sendFriendRequest(String userId) async {
+  Future<void> sendFriendRequest(String userId,String email) async {
     emit(SendFriendRequestLoadingState());
     try {
       await sendFriendRequestUseCase.execute(userId);
+      await findUser(email);
       emit(SendFriendRequestSuccessfullyState());
     } catch (error) {
       if (error is DioException) {
@@ -40,10 +41,10 @@ class AddFriendCubit extends Cubit<AddFriendStates> {
 
   SearchResultModel? user ;
   TextEditingController emailController = TextEditingController();
-  Future<void> findUser() async {
+  Future<void> findUser(String email) async {
     emit(FindUserLoadingState());
     try {
-      user = await findUserUseCase.execute(emailController.text);
+      user = await findUserUseCase.execute(email);
       emit(FindUserSuccessfullyState());
     } catch (error) {
       if (error is DioException) {
