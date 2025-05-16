@@ -120,5 +120,6 @@ Map<String, String> arabicLanguage = {
   "confirm_dialog_default_title": "تأكيد العملية",
   "confirm_dialog_default_message": "هل انت متأكد من ذلك ؟",
   "confirm_dialog_default_confirm": "تأكيد",
-  "confirm_dialog_default_cancel": "الغاء"
+  "confirm_dialog_default_cancel": "الغاء",
+  "sent_friend_requests" : "طلبات الصداقة المرسلة"
 };

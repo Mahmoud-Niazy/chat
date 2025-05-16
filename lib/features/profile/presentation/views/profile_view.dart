@@ -13,12 +13,14 @@ import 'package:chat/features/profile/presentation/manager/profile_cubit/profile
 import 'package:chat/features/profile/presentation/views/widgets/info_item.dart';
 import 'package:chat/features/profile/presentation/views/widgets/section_item.dart';
 import 'package:chat/features/profile/presentation/views/widgets/setting_item.dart';
+import 'package:chat/features/sent_friend_requests/presentation/manager/sent_friend_requests_cubit/sent_friend_requests_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../add_friend/presentation/views/add_friend_view.dart';
 import '../../../friends_list/presentation/views/friends_list_view.dart';
+import '../../../sent_friend_requests/presentation/views/sent_friend_requests_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -133,6 +135,21 @@ class ProfileView extends StatelessWidget {
                                       (context) =>
                                       serviceLocator<AddFriendCubit>(),
                                   child: AddFriendView(),
+                                ),
+                              );
+                            },
+                          ),
+                          SettingItem(
+                            Icons.send,
+                            'sent_friend_requests'.tr,
+                                () {
+                              navigate(
+                                context: context,
+                                screen: BlocProvider(
+                                  create:
+                                      (context) =>
+                                      serviceLocator<SentFriendRequestsCubit>()..getSentFriendRequests(),
+                                  child: SentFriendRequestsView(),
                                 ),
                               );
                             },
