@@ -121,5 +121,6 @@ Map<String, String> englishLanguage = {
   "confirm_dialog_default_message": "Are you sure you want to proceed?",
   "confirm_dialog_default_confirm": "Confirm",
   "confirm_dialog_default_cancel": "Cancel",
-  "sent_friend_requests" : "Sent Friend Requests"
+  "sent_friend_requests" : "Sent Friend Requests",
+  "blocked_users" : "Blocked Users"
 };

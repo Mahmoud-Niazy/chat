@@ -109,7 +109,7 @@ class ProfileView extends StatelessWidget {
                         const SizedBox(height: 24),
                         SectionItem('settings'.tr, [
                           SettingItem(
-                            Icons.person_add_outlined,
+                            Icons.people,
                             'friends'.tr,
                                 () {
                               navigate(
@@ -149,6 +149,21 @@ class ProfileView extends StatelessWidget {
                                   create:
                                       (context) =>
                                       serviceLocator<SentFriendRequestsCubit>()..getSentFriendRequests(),
+                                  child: SentFriendRequestsView(),
+                                ),
+                              );
+                            },
+                          ),
+                          SettingItem(
+                            Icons.list,
+                            'blocked_users'.tr,
+                                () {
+                              navigate(
+                                context: context,
+                                screen: BlocProvider(
+                                  create:
+                                      (context) =>
+                                  serviceLocator<SentFriendRequestsCubit>()..getSentFriendRequests(),
                                   child: SentFriendRequestsView(),
                                 ),
                               );
