@@ -7,11 +7,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'blocked_users_states.dart';
 
-class BlockedUsers extends Cubit<BlockedUsersStates> {
+class BlockedUsersCubit extends Cubit<BlockedUsersStates> {
   final GetBlockedUsersUseCase getBlockedUsersUseCase;
   final UnblockUserUseCase unblockUserUseCase;
 
-  BlockedUsers(this.getBlockedUsersUseCase,
+  BlockedUsersCubit(this.getBlockedUsersUseCase,
       this.unblockUserUseCase) : super(BlockedUsersInitialState());
 
   List<BlockedUserModel> blockedUsers = [];

@@ -3,6 +3,9 @@ import 'package:chat/features/add_friend/domain/usecases/find_user_use_case.dart
 import 'package:chat/features/add_friend/domain/usecases/send_friend_request_use_case.dart';
 import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
 import 'package:chat/features/auth/domain/repos/auth_repo.dart';
+import 'package:chat/features/blocked_users/domain/repos/blocked_users_repo.dart';
+import 'package:chat/features/blocked_users/domain/usecases/get_blocked_users_use_case.dart';
+import 'package:chat/features/blocked_users/domain/usecases/unblock_user_use_case.dart';
 import 'package:chat/features/edit_profile/domain/repos/edit_profile_repo.dart';
 import 'package:chat/features/edit_profile/domain/use_cases/get_user_data_use_case.dart';
 import 'package:chat/features/edit_profile/domain/use_cases/pick_image_use_case.dart';
@@ -27,6 +30,8 @@ import '../../features/auth/domain/usecases/send_reset_password_code_use_case.da
 import '../../features/auth/domain/usecases/sign_in_use_case.dart';
 import '../../features/auth/domain/usecases/sign_up_use_case.dart';
 import '../../features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
+import '../../features/blocked_users/data/repos/blocked_users_repo_imp.dart';
+import '../../features/blocked_users/presentation/manager/blocked_users_cubit/blocked_users_cubit.dart';
 import '../../features/edit_profile/data/repos/edit_profile_repo_imp.dart';
 import '../../features/friends_list/data/repos/friends_list_repo_imp.dart';
 import '../../features/layout/presentation/manager/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
@@ -70,6 +75,9 @@ class ServiceLocator {
     );
     serviceLocator.registerLazySingleton<SentFriendRequestsRepo>(
           () => SentFriendRequestsRepoImp(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<BlockedUsersRepo>(
+          () => BlockedUsersRepoImp(serviceLocator()),
     );
 
 
@@ -119,6 +127,12 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<RemoveSentFriendRequestUseCase>(
           ()=> RemoveSentFriendRequestUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetBlockedUsersUseCase>(
+          ()=> GetBlockedUsersUseCase(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<UnblockUserUseCase>(
+          ()=> UnblockUserUseCase(serviceLocator()),
+    );
 
 
     /// CUBITS
@@ -142,6 +156,9 @@ class ServiceLocator {
     );
     serviceLocator.registerFactory<SentFriendRequestsCubit>(
           ()=> SentFriendRequestsCubit(serviceLocator(),serviceLocator()),
+    );
+    serviceLocator.registerFactory<BlockedUsersCubit>(
+          ()=> BlockedUsersCubit(serviceLocator(),serviceLocator()),
     );
   }
 }
