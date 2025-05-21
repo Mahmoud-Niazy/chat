@@ -67,7 +67,7 @@ class AddFriendView extends StatelessWidget {
                 ),
                   BlocBuilder<AddFriendCubit, AddFriendStates>(
                     builder: (context, state) {
-                      if(state is FindUserErrorState){
+                      if(state is AddFriendErrorState){
                         return EmptyListWidget();
                       }
                       if(cubit.user != null) {

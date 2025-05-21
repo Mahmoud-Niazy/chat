@@ -28,12 +28,12 @@ class AddFriendCubit extends Cubit<AddFriendStates> {
     } catch (error) {
       if (error is DioException) {
         emit(
-          SendFriendRequestErrorState(
+          AddFriendErrorState(
             ServerFailure.fromDioException(error).error,
           ),
         );
       } else {
-        emit(SendFriendRequestErrorState(error.toString()));
+        emit(AddFriendErrorState(error.toString()));
       }
     }
   }
@@ -49,12 +49,12 @@ class AddFriendCubit extends Cubit<AddFriendStates> {
     } catch (error) {
       if (error is DioException) {
         emit(
-          FindUserErrorState(
+          AddFriendErrorState(
             ServerFailure.fromDioException(error).error,
           ),
         );
       } else {
-        emit(FindUserErrorState(error.toString()));
+        emit(AddFriendErrorState(error.toString()));
       }
     }
   }
