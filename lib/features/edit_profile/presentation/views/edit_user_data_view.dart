@@ -13,8 +13,8 @@ import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_circular_progress_indicator.dart';
 import '../../../../core/widgets/custom_underlined_text_form_field.dart';
 import '../../../layout/presentation/view/layout_view.dart';
-import '../managers/settings_cubit.dart';
-import '../managers/settings_state.dart';
+import '../managers/edit_profile_cubit/edit_profile_cubit.dart';
+import '../managers/edit_profile_cubit/edit_profile_states.dart';
 
 
 class EditProfileView extends StatefulWidget {

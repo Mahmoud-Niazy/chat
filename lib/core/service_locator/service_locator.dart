@@ -10,7 +10,7 @@ import 'package:chat/features/edit_profile/domain/repos/edit_profile_repo.dart';
 import 'package:chat/features/edit_profile/domain/use_cases/get_user_data_use_case.dart';
 import 'package:chat/features/edit_profile/domain/use_cases/pick_image_use_case.dart';
 import 'package:chat/features/edit_profile/domain/use_cases/update_user_data_use_case.dart';
-import 'package:chat/features/edit_profile/presentation/managers/settings_cubit.dart';
+import 'package:chat/features/edit_profile/presentation/managers/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:chat/features/friends_list/domain/repos/friends_list_repo.dart';
 import 'package:chat/features/friends_list/domain/usecases/block_friend_use_case.dart';
 import 'package:chat/features/friends_list/domain/usecases/delete_friend_use_cas.dart';

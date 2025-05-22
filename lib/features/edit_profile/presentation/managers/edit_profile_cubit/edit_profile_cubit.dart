@@ -1,14 +1,14 @@
-import 'package:chat/features/edit_profile/presentation/managers/settings_state.dart';
+import 'package:chat/features/edit_profile/presentation/managers/edit_profile_cubit/edit_profile_states.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_parser/http_parser.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../../../core/failure/failure.dart';
-import '../../../profile/data/models/user_model/user_model.dart';
-import '../../domain/use_cases/get_user_data_use_case.dart';
-import '../../domain/use_cases/pick_image_use_case.dart';
-import '../../domain/use_cases/update_user_data_use_case.dart';
+import '../../../../../core/failure/failure.dart';
+import '../../../../profile/data/models/user_model/user_model.dart';
+import '../../../domain/use_cases/get_user_data_use_case.dart';
+import '../../../domain/use_cases/pick_image_use_case.dart';
+import '../../../domain/use_cases/update_user_data_use_case.dart';
 
 class EditProfileCubit extends Cubit<EditProfileStates> {
 
