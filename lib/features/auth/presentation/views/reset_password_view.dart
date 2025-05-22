@@ -112,7 +112,7 @@ class ResetPasswordView extends StatelessWidget {
                       );
                       navigateAndRemoveUntil(context: context, screen: LoginView());
                     }
-                    if (state is ResetPasswordErrorState) {
+                    if (state is AuthErrorState) {
                       showSnackBar(
                         context: context,
                         label: CacheHelper.isAr != false ? await translateEnglishToArabic(state.error) : state.error,

@@ -45,9 +45,9 @@ class AuthCubit extends Cubit<AuthStates> {
       emit(SignInSuccessfullyState());
     } catch (error) {
       if (error is DioException) {
-        emit(SignInErrorState(ServerFailure.fromDioException(error).error));
+        emit(AuthErrorState(ServerFailure.fromDioException(error).error));
       } else {
-        emit(SignInErrorState(error.toString()));
+        emit(AuthErrorState(error.toString()));
       }
     }
   }
@@ -77,9 +77,9 @@ class AuthCubit extends Cubit<AuthStates> {
     }
     catch(error){
       if (error is DioException) {
-        emit(SignUpErrorState(ServerFailure.fromDioException(error).error));
+        emit(AuthErrorState(ServerFailure.fromDioException(error).error));
       } else {
-        emit(SignUpErrorState(error.toString()));
+        emit(AuthErrorState(error.toString()));
       }
     }
   }
@@ -92,9 +92,9 @@ class AuthCubit extends Cubit<AuthStates> {
     }
     catch(error){
       if (error is DioException) {
-        emit(SendPasswordResetCodeErrorState(ServerFailure.fromDioException(error).error));
+        emit(AuthErrorState(ServerFailure.fromDioException(error).error));
       } else {
-        emit(SendPasswordResetCodeErrorState(error.toString()));
+        emit(AuthErrorState(error.toString()));
       }
     }
   }
@@ -111,9 +111,9 @@ class AuthCubit extends Cubit<AuthStates> {
     }
         catch(error){
           if (error is DioException) {
-            emit(ResetPasswordErrorState(ServerFailure.fromDioException(error).error));
+            emit(AuthErrorState(ServerFailure.fromDioException(error).error));
           } else {
-            emit(ResetPasswordErrorState(error.toString()));
+            emit(AuthErrorState(error.toString()));
           }
         }
   }

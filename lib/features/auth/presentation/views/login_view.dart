@@ -118,7 +118,7 @@ class LoginView extends StatelessWidget {
                             clearControllers();
                             SocketService().init();
                           }
-                          if (state is SignInErrorState) {
+                          if (state is AuthErrorState) {
                             showSnackBar(
                               context: context,
                               label: CacheHelper.isAr != false

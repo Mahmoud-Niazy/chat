@@ -109,7 +109,7 @@ class RegisterView extends StatelessWidget {
                             );
                             SocketService().init();
                           }
-                          if (state is SignUpErrorState) {
+                          if (state is AuthErrorState) {
                             showErrorSnackBar(
                               context,
                               state.error

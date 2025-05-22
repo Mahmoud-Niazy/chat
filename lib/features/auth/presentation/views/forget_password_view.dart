@@ -91,7 +91,7 @@ class ForgetPasswordView extends StatelessWidget {
                     )
                     );
                   }
-                  if(state is SendPasswordResetCodeErrorState){
+                  if(state is AuthErrorState){
                     showSnackBar(
                       context: context,
                       label: CacheHelper.isAr != false ? await translateEnglishToArabic(state.error) : state.error,
