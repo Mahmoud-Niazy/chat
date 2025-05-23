@@ -1,5 +1,6 @@
 import 'package:chat/core/widgets/custom_app_bar.dart';
 import 'package:chat/core/widgets/custom_circular_progress_indicator.dart';
+import 'package:chat/core/widgets/custom_error_widget.dart';
 import 'package:chat/core/widgets/empty_list_widget.dart';
 import 'package:chat/features/friends_list/presentation/views/widgets/friend_item.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,9 @@ class FriendsListView extends StatelessWidget {
           List<FriendModel> friends = cubit.allFriends;
           if (friends.isEmpty) {
             return EmptyListWidget();
+          }
+          if(state is FriendsListErrorState){
+            return CustomErrorWidget();
           }
           return ListView.builder(
             padding: const EdgeInsets.all(16),

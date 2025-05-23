@@ -29,10 +29,10 @@ class FriendsListCubit extends Cubit<FriendsListStates> {
     } catch (error) {
       if (error is DioException) {
         emit(
-          GetFriendsListErrorState(ServerFailure.fromDioException(error).error),
+          FriendsListErrorState(ServerFailure.fromDioException(error).error),
         );
       } else {
-        emit(GetFriendsListErrorState(error.toString()));
+        emit(FriendsListErrorState(error.toString()));
       }
     }
   }
@@ -46,10 +46,10 @@ class FriendsListCubit extends Cubit<FriendsListStates> {
     } catch (error) {
       if (error is DioException) {
         emit(
-          DeleteFriendErrorState(ServerFailure.fromDioException(error).error),
+          FriendsListErrorState(ServerFailure.fromDioException(error).error),
         );
       } else {
-        emit(DeleteFriendErrorState(error.toString()));
+        emit(FriendsListErrorState(error.toString()));
       }
     }
   }
@@ -63,10 +63,10 @@ class FriendsListCubit extends Cubit<FriendsListStates> {
     } catch (error) {
       if (error is DioException) {
         emit(
-          BlockFriendErrorState(ServerFailure.fromDioException(error).error),
+          FriendsListErrorState(ServerFailure.fromDioException(error).error),
         );
       } else {
-        emit(BlockFriendErrorState(error.toString()));
+        emit(FriendsListErrorState(error.toString()));
       }
     }
   }
