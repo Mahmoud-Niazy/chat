@@ -69,7 +69,7 @@ class _EditProfileViewState extends State<EditProfileView> {
             // BottomNavigationBarCubit.get(context).currentIndex = 0;
             navigateAndRemoveUntil(context: context, screen: const LayoutView());
           }
-          if (state is UpdateUserDataErrorState) {
+          if (state is EditProfileErrorState) {
             showSnackBar(
                 context: context,
                 label: CacheHelper.isAr != false ? await translateEnglishToArabic(state.error) : state.error,

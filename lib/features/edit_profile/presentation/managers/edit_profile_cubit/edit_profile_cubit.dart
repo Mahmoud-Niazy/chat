@@ -41,9 +41,9 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
       emit(GetUserDataSuccessfullyState());
     } catch (error) {
       if (error is DioException) {
-        emit(GetUserDataErrorState(ServerFailure.fromDioException(error).error));
+        emit(EditProfileErrorState(ServerFailure.fromDioException(error).error));
       } else {
-        emit(GetUserDataErrorState(error.toString()));
+        emit(EditProfileErrorState(error.toString()));
       }
     }
   }
@@ -85,10 +85,10 @@ class EditProfileCubit extends Cubit<EditProfileStates> {
     }
     catch(error){
       if (error is DioException) {
-        emit(UpdateUserDataErrorState(
+        emit(EditProfileErrorState(
             ServerFailure.fromDioException(error).error));
       } else {
-        emit(UpdateUserDataErrorState(error.toString()));
+        emit(EditProfileErrorState(error.toString()));
       }
     }
   }
