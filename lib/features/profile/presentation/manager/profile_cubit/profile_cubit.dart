@@ -20,10 +20,10 @@ class ProfileCubit extends Cubit<ProfileStates>{
     }
     catch(error){
       if(error is DioException){
-        emit(GetUserDataErrorState(ServerFailure.fromDioException(error).error));
+        emit(ProfileErrorState(ServerFailure.fromDioException(error).error));
       }
       else{
-        emit(GetUserDataErrorState(error.toString()));
+        emit(ProfileErrorState(error.toString()));
       }
     }
   }

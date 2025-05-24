@@ -38,7 +38,7 @@ class ProfileView extends StatelessWidget {
             if (state is GetUserDataLoadingState) {
               return CustomCircularProgressIndicator();
             }
-            if (state is GetUserDataErrorState) {
+            if (state is ProfileErrorState) {
               return CustomErrorWidget();
             }
             return CustomScrollView(
