@@ -1,7 +1,7 @@
 class BlockedUserModel {
-  final String id;
-  final String name;
-  final String userProfileImage;
+  final String? id;
+  final String? name;
+  final String? userProfileImage;
 
   BlockedUserModel({
     required this.id,
@@ -11,9 +11,9 @@ class BlockedUserModel {
 
   factory BlockedUserModel.fromJson(Map<String, dynamic> json) {
     return BlockedUserModel(
-      id: json['_id'] as String,
-      name: json['name'] as String,
-      userProfileImage: json['userProfileImage'] as String,
+      id: json['_id'] as String?,
+      name: json['name'] as String?,
+      userProfileImage: json['userProfileImage'] as String?,
     );
   }
 

@@ -5,6 +5,7 @@ import 'package:chat/core/utils/app_styles.dart';
 import 'package:chat/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:chat/core/widgets/custom_error_widget.dart';
 import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
+import 'package:chat/features/blocked_users/presentation/manager/blocked_users_cubit/blocked_users_cubit.dart';
 import 'package:chat/features/edit_profile/presentation/managers/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:chat/features/edit_profile/presentation/views/edit_user_data_view.dart';
 import 'package:chat/features/friends_list/presentation/manager/friends_list_cubit/friends_list_cubit.dart';
@@ -19,6 +20,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../add_friend/presentation/views/add_friend_view.dart';
+import '../../../blocked_users/presentation/views/blocked_users_view.dart';
 import '../../../friends_list/presentation/views/friends_list_view.dart';
 import '../../../sent_friend_requests/presentation/views/sent_friend_requests_view.dart';
 
@@ -163,8 +165,8 @@ class ProfileView extends StatelessWidget {
                                 screen: BlocProvider(
                                   create:
                                       (context) =>
-                                  serviceLocator<SentFriendRequestsCubit>()..getSentFriendRequests(),
-                                  child: SentFriendRequestsView(),
+                                  serviceLocator<BlockedUsersCubit>()..getBlockedUsers(),
+                                  child: BlockedUsersView(),
                                 ),
                               );
                             },

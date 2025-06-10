@@ -51,7 +51,6 @@ class ServiceLocator {
           () => ApiServices(),
     );
 
-
     /// SOCKET IO
     serviceLocator.registerLazySingleton<SocketService>(
           () => SocketService(),

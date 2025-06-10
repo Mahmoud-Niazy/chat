@@ -17,7 +17,7 @@ class BlockedUsersCubit extends Cubit<BlockedUsersStates> {
   List<BlockedUserModel> blockedUsers = [];
 
   Future<void> getBlockedUsers() async {
-    emit(GetBlockedUsersSuccessState());
+    emit(GetBlockedUsersLoadingState());
     try{
       blockedUsers = await getBlockedUsersUseCase.execute();
       emit(GetBlockedUsersSuccessState());
