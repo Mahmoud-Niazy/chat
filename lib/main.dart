@@ -4,6 +4,7 @@ import 'package:chat/core/service_locator/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'chat_app.dart';
+import 'core/scocket_io_services/socket_services.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +12,9 @@ void main() async{
   ServiceLocator.init();
   ApiServices.init();
   await CacheHelper.init();
+  if(CacheHelper.token != null) {
+    SocketService().init();
+  }
   // print(CacheHelper.token);
   // print(CacheHelper.userId);
   runApp(const ChatApp());

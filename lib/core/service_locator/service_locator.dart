@@ -6,6 +6,9 @@ import 'package:chat/features/auth/domain/repos/auth_repo.dart';
 import 'package:chat/features/blocked_users/domain/repos/blocked_users_repo.dart';
 import 'package:chat/features/blocked_users/domain/usecases/get_blocked_users_use_case.dart';
 import 'package:chat/features/blocked_users/domain/usecases/unblock_user_use_case.dart';
+import 'package:chat/features/conversations/domain/repos/conversations_repo.dart';
+import 'package:chat/features/conversations/domain/use_cases/get_conversations_use_case.dart';
+import 'package:chat/features/conversations/presentation/manager/conversations_cubit/conversations_cubit.dart';
 import 'package:chat/features/edit_profile/domain/repos/edit_profile_repo.dart';
 import 'package:chat/features/edit_profile/domain/use_cases/get_user_data_use_case.dart';
 import 'package:chat/features/edit_profile/domain/use_cases/pick_image_use_case.dart';
@@ -32,6 +35,7 @@ import '../../features/auth/domain/usecases/sign_up_use_case.dart';
 import '../../features/auth/presentation/manager/auth_cubit/auth_cubit.dart';
 import '../../features/blocked_users/data/repos/blocked_users_repo_imp.dart';
 import '../../features/blocked_users/presentation/manager/blocked_users_cubit/blocked_users_cubit.dart';
+import '../../features/conversations/data/repos/conversations_repo_imp.dart';
 import '../../features/edit_profile/data/repos/edit_profile_repo_imp.dart';
 import '../../features/friends_list/data/repos/friends_list_repo_imp.dart';
 import '../../features/layout/presentation/manager/bottom_navigation_bar_cubit/bottom_navigation_bar_cubit.dart';
@@ -77,6 +81,9 @@ class ServiceLocator {
     );
     serviceLocator.registerLazySingleton<BlockedUsersRepo>(
           () => BlockedUsersRepoImp(serviceLocator()),
+    );
+    serviceLocator.registerLazySingleton<ConversationsRepo>(
+          () => ConversationsRepoImp(serviceLocator()),
     );
 
 
@@ -132,6 +139,9 @@ class ServiceLocator {
     serviceLocator.registerLazySingleton<UnblockUserUseCase>(
           ()=> UnblockUserUseCase(serviceLocator()),
     );
+    serviceLocator.registerLazySingleton<GetConversationsUseCase>(
+          ()=> GetConversationsUseCase(serviceLocator()),
+    );
 
 
     /// CUBITS
@@ -158,6 +168,9 @@ class ServiceLocator {
     );
     serviceLocator.registerFactory<BlockedUsersCubit>(
           ()=> BlockedUsersCubit(serviceLocator(),serviceLocator()),
+    );
+    serviceLocator.registerFactory<ConversationsCubit>(
+          ()=> ConversationsCubit(serviceLocator()),
     );
   }
 }
