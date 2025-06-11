@@ -6,6 +6,7 @@ import 'package:chat/core/widgets/custom_circular_progress_indicator.dart';
 import 'package:chat/core/widgets/custom_error_widget.dart';
 import 'package:chat/features/add_friend/presentation/manager/add_friend_cubit/add_friend_cubit.dart';
 import 'package:chat/features/blocked_users/presentation/manager/blocked_users_cubit/blocked_users_cubit.dart';
+import 'package:chat/features/conversations/presentation/views/conversation_detail_view.dart';
 import 'package:chat/features/edit_profile/presentation/managers/edit_profile_cubit/edit_profile_cubit.dart';
 import 'package:chat/features/edit_profile/presentation/views/edit_user_data_view.dart';
 import 'package:chat/features/friends_list/presentation/manager/friends_list_cubit/friends_list_cubit.dart';
@@ -187,7 +188,9 @@ class ProfileView extends StatelessWidget {
                           SettingItem(
                             Icons.contact_support_outlined,
                             'contact_us'.tr,
-                                () {},
+                                () {
+                              navigate(context: context, screen: ConversationDetailView(receiverName: 'mahmoud', receiverImage: 'mohamed'));
+                                },
                           ),
                           SettingItem(
                             Icons.language_outlined,

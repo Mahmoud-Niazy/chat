@@ -1,3 +1,4 @@
+import 'package:chat/features/conversations/data/models/message_model/message_model.dart';
 import 'package:chat/features/conversations/domain/use_cases/get_conversations_use_case.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +13,7 @@ class ConversationsCubit extends Cubit<ConversationsStates>{
   Stream<List<ConversationModel>>? conversationsStream ;
   List<ConversationModel> conversations = [];
 
-  void getConversations(){
+  void getConversations()async{
     emit(GetConversationsLoadingState());
     try {
       conversationsStream = getConversationsUseCase.execute();
@@ -21,13 +22,13 @@ class ConversationsCubit extends Cubit<ConversationsStates>{
         for(var conversation in data) {
           conversations.add(conversation);
         }
-        conversations.sort((a, b) {
-          final dateA = DateTime.parse(a.createdAt);
-          final dateB = DateTime.parse(b.createdAt);
-          return dateB.compareTo(dateA); // Newest first
-        });
-        emit(GetConversationsSuccessState());
       });
+      conversations.sort((a, b) {
+        final dateA = DateTime.parse(a.createdAt);
+        final dateB = DateTime.parse(b.createdAt);
+        return dateB.compareTo(dateA); // Newest first
+      });
+      emit(GetConversationsSuccessState());
     } catch (error) {
       if(error is DioException){
         emit(GetConversationsErrorState(ServerFailure.fromDioException(error).error));
@@ -37,5 +38,7 @@ class ConversationsCubit extends Cubit<ConversationsStates>{
       }
     }
   }
+
+  List<MessageModel> messages = [];
 
 }
